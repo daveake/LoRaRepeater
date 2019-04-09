@@ -123,7 +123,7 @@ void setup()
 
   Serial.println("");
   Serial.println("LoRa USB Repeater");
-  Serial.println("Version=1.0");
+  Serial.println("Version=1.0.1");
 
   if ((EEPROM.read(0) == 'D') && (EEPROM.read(1) == 'A'))
   {
@@ -533,7 +533,7 @@ void ProcessCommand(char *Line)
   {
     SetPPM(Line);
   }
-  else if (Command == 'P')
+  else if (Command == 'R')
   {
     SetRepeating(Line);
   }
@@ -544,6 +544,11 @@ void ProcessCommand(char *Line)
   }
   else if (Command == '?')
   {
+    ShowSettings();
+  }
+  else if (Command == '^')
+  {
+    LoadSettings();
     ShowSettings();
   }
   else if (Command == '*')
